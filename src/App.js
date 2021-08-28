@@ -1,9 +1,10 @@
-import './App.css'
+import Menu from './components/Menu/index'
 
 function App() {
   return (
     <div className="App">
-      <h1>Ladeira SA</h1>
+      <Menu />
+
     </div>
   );
 }
