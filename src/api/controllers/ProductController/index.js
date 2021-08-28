@@ -1,7 +1,5 @@
-import api from '../../index';
+import api from "../../index";
 
 export const GetAllProducts = () => {
-  return api.post(
-    `/product`,
-  );
+  return api.get(`/product`);
 };

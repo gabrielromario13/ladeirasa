@@ -1,10 +1,9 @@
-import Menu from './components/Menu/index'
+import ProductList from "./views/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <Menu />
-
+      <ProductList />
     </div>
   );
 }
