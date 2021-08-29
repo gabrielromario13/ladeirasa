@@ -22,12 +22,3 @@ export const ProductContainer = styled.div`
 export const ProductNameText = styled.p`
   margin-left: 4px;
 `;
-
-export const TotalDataContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-
-  margin: 10px 10px 0 0;
-`;
-
-export const TotalDataText = styled.p``;

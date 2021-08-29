@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 function DropDown({ name, menuItemName }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleFocus = (event) => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -19,13 +19,13 @@ function DropDown({ name, menuItemName }) {
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
-        onMouseOver={handleFocus}
+        onClick={handleClick}
       >
         {name}
       </Button>
       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)}>
         {menuItemName.map((itemName, i) => (
-          <MenuItem key={i} onClick={handleClose} onMouseOut={handleClose}>
+          <MenuItem key={i} onClick={handleClose}>
             {itemName}
           </MenuItem>
         ))}
