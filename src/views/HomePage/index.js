@@ -17,9 +17,13 @@ const ProductList = () => {
     setProducts(Products);
   }, [requestApi]);
 
-  useEffect(() => {
+  const initialConfigs = () => {
     getAllProducts();
-  }, [getAllProducts]);
+  }
+
+  useEffect(() => {
+    initialConfigs();
+  }, []);
 
   return (
     <Container>

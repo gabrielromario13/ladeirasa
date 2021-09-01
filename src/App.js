@@ -1,4 +1,5 @@
 import ProductList from "./views/HomePage";
+import './App.css'
 
 function App() {
   return (
