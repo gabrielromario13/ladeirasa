@@ -9,7 +9,7 @@ import {
   MenuItem,
 } from "@material-ui/core";
 
-const Menu = ({ items, subItems }) => {
+const Menu = ({ items }) => {
   const [data, setData] = React.useState({
     open: false,
     anchorEl: null,
@@ -33,9 +33,11 @@ const Menu = ({ items, subItems }) => {
     });
   };
 
+  const verifySubitemsListOpen = (index) => data.value === index && data.open
+
   return (
     <div
-      onMouseLeave={() => handleMenuClose()}
+      onMouseLeave={handleMenuClose}
     >
       <AppBar position="static">
         <Paper>
@@ -46,27 +48,29 @@ const Menu = ({ items, subItems }) => {
             centered
           >
             {items.map((item, index) => (
-              <Tab
-                key={index}
-                onMouseEnter={(e) => handleMenuOpen(index, e)}
-                data-key={index}
-                label={item.label}
-                aria-owns={data.open ? "menu-list-grow" : undefined}
-                aria-haspopup={"true"}
-              />
+              <React.Fragment>
+                <Tab
+                  key={index}
+                  onMouseEnter={(e) => handleMenuOpen(index, e)}
+                  data-key={index}
+                  label={item.label}
+                  aria-owns={data.open ? "menu-list-grow" : undefined}
+                  aria-haspopup={"true"}
+                />
+                <Popper open={verifySubitemsListOpen(index)} anchorEl={data.anchorEl} id="menu-list-grow">
+                  <Paper>
+                    <MenuList>
+                      {item.subItems.map((subItem, index) => (
+                        <MenuItem key={index} onClick={handleMenuClose}>
+                          {subItem}
+                        </MenuItem>
+                      ))}
+                    </MenuList>
+                  </Paper>
+                </Popper>
+              </React.Fragment>
             ))}
           </Tabs>
-          <Popper open={data.open} anchorEl={data.anchorEl} id="menu-list-grow">
-            <Paper>
-              <MenuList>
-                {subItems.map((item, index) => (
-                  <MenuItem key={index} onClick={handleMenuClose}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </MenuList>
-            </Paper>
-          </Popper>
         </Paper>
       </AppBar>
     </div>
