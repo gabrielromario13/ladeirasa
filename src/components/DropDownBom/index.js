@@ -72,8 +72,8 @@ const Menu = ({ items }) => {
                 <Popper open={verifySubitemsListOpen(index)} anchorEl={data.anchorEl} id="menu-list-grow">
                   <Paper>
                     <MenuList>
-                      {item.subItems.map((subItem, index) => (
-                        <MenuItem key={index} onClick={() => redirectPage(item.label, subItem, index)}>
+                      {item.subItems.map((subItem, indexSub) => (
+                        <MenuItem key={indexSub} onClick={() => redirectPage(item.label, subItem, index)}>
                           {subItem}
                         </MenuItem>
                       ))}
