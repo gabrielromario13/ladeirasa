@@ -9,12 +9,16 @@ import {
   MenuItem,
 } from "@material-ui/core";
 
+import { useNavigate } from 'react-router-dom'
+
 const Menu = ({ items }) => {
   const [data, setData] = React.useState({
     open: false,
     anchorEl: null,
     value: 0
   })
+
+  const navigate = useNavigate();
 
   const handleMenuOpen = (index, event) => {
     const { currentTarget } = event;
@@ -33,6 +37,11 @@ const Menu = ({ items }) => {
     });
   };
 
+  const redirectPage = (item, subitem) => {
+    const url = `/${item}/${subitem}`
+    navigate(url)
+  }
+
   const verifySubitemsListOpen = (index) => data.value === index && data.open
 
   return (
@@ -48,7 +57,7 @@ const Menu = ({ items }) => {
             centered
           >
             {items.map((item, index) => (
-              <React.Fragment>
+              <span>
                 <Tab
                   key={index}
                   onMouseEnter={(e) => handleMenuOpen(index, e)}
@@ -56,19 +65,20 @@ const Menu = ({ items }) => {
                   label={item.label}
                   aria-owns={data.open ? "menu-list-grow" : undefined}
                   aria-haspopup={"true"}
+                  onClick={() => redirectPage(item.label, '')}
                 />
                 <Popper open={verifySubitemsListOpen(index)} anchorEl={data.anchorEl} id="menu-list-grow">
                   <Paper>
                     <MenuList>
                       {item.subItems.map((subItem, index) => (
-                        <MenuItem key={index} onClick={handleMenuClose}>
+                        <MenuItem key={index} onClick={() => redirectPage(item.label, subItem)}>
                           {subItem}
                         </MenuItem>
                       ))}
                     </MenuList>
                   </Paper>
                 </Popper>
-              </React.Fragment>
+              </span>
             ))}
           </Tabs>
         </Paper>

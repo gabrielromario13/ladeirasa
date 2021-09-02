@@ -3,7 +3,7 @@ import DropDownBom from "../DropDownBom";
 
 const items = [
   {
-    pathName: "/test", label: "Shape", subItems:
+    label: "Shape", subItems:
       ["Roda",
         "Shape Maple",
         "Shape Nacional",
@@ -12,14 +12,14 @@ const items = [
       ]
   },
   {
-    pathName: "/test", label: "Confecção", subItems:
+    label: "Confecção", subItems:
       ["Blusa",
         "Moletom",
         "Calça"
       ]
   },
   {
-    pathName: "/test", label: "Feminino", subItems:
+    label: "Feminino", subItems:
       ["Shouguer bag kkk",
         "Calça",
         "Sei la",
@@ -30,9 +30,7 @@ const items = [
 
 const Menu = () => {
   return (
-    <div>
-      <DropDownBom items={items} />
-    </div>
+    <DropDownBom items={items} />
   );
 };
 

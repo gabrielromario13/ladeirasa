@@ -1,11 +1,16 @@
-import ProductList from "./views/HomePage";
+import Routes from "./routes";
 import './App.css'
+import Menu from './components/Menu'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <ProductList />
-    </div>
+    <Router>
+      <div className="App">
+        <Menu />
+        <Routes />
+      </div>
+    </Router>
   );
 }
 

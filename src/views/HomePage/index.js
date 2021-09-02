@@ -27,7 +27,6 @@ const ProductList = () => {
 
   return (
     <Container>
-      <Menu />
       <ProductsList products={products} />
     </Container>
   );
