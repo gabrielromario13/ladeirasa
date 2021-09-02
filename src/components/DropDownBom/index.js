@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Paper,
@@ -12,10 +12,11 @@ import {
 import { useNavigate } from 'react-router-dom'
 
 const Menu = ({ items }) => {
-  const [data, setData] = React.useState({
+  const [categorySelected, setCategorySelected] = useState(0);
+  const [data, setData] = useState({
     open: false,
     anchorEl: null,
-    value: 0
+    value: categorySelected
   })
 
   const navigate = useNavigate();
@@ -33,11 +34,12 @@ const Menu = ({ items }) => {
     setData({
       open: false,
       anchorEl: null,
-      value: 0
+      value: categorySelected
     });
   };
 
-  const redirectPage = (item, subitem) => {
+  const redirectPage = (item, subitem, index) => {
+    setCategorySelected(index)
     const url = `/${item}/${subitem}`
     navigate(url)
   }
@@ -65,13 +67,13 @@ const Menu = ({ items }) => {
                   label={item.label}
                   aria-owns={data.open ? "menu-list-grow" : undefined}
                   aria-haspopup={"true"}
-                  onClick={() => redirectPage(item.label, '')}
+                  onClick={() => redirectPage(item.label, '', index)}
                 />
                 <Popper open={verifySubitemsListOpen(index)} anchorEl={data.anchorEl} id="menu-list-grow">
                   <Paper>
                     <MenuList>
                       {item.subItems.map((subItem, index) => (
-                        <MenuItem key={index} onClick={() => redirectPage(item.label, subItem)}>
+                        <MenuItem key={index} onClick={() => redirectPage(item.label, subItem, index)}>
                           {subItem}
                         </MenuItem>
                       ))}

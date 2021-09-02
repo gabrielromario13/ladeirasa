@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { GetAllProducts } from "../../api/controllers/ProductController";
 import { Container } from "./styles";
 import ProductsList from "../../components/ProductsList";
-import Menu from "../../components/Menu";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
