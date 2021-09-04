@@ -59,7 +59,7 @@ const Menu = ({ items }) => {
             centered
           >
             {items.map((item, index) => (
-              <span>
+              <span key={index}>
                 <Tab
                   key={index}
                   onMouseEnter={(e) => handleMenuOpen(index, e)}
