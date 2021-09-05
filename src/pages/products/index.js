@@ -1,7 +1,7 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import Card from '../../components/Card'
-
+import * as S from './styled'
 const mockReturnBack = [
   {
     price: 120,
@@ -28,13 +28,13 @@ const mockReturnBack = [
 const Products = () => {
   // const { category, subCategory } = useParams()
   return (
-    <div>
+    <S.WrapperGrid>
       {
         mockReturnBack.map((product, index) => (
           <Card key={index} price={product.price} description={product.description} />
         ))
       }
-    </div>
+    </S.WrapperGrid>
   )
 }
 

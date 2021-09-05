@@ -9,7 +9,7 @@ import * as S from './styled'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 250,
+    width: 230,
   },
   media: {
     height: 220,
